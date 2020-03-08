@@ -1,13 +1,25 @@
-let obj={
-    id:2,
-    name:"GAYATHRI"
-}
-function pretic(num,str,obj){
-    if(obj.id===num)
+function owncond (arr){
+    return function(val)
     {
-            obj.name=obj.name+str;
-            console.log(obj)
+        for(let i=0;i<arr.length;i++)
+        {
+          const conds=arr[i];
+          const [pre,trans]=conds;
+          if(pre(val))
+          {
+              return trans(val)
+          }
+       }
     }
-}
+  }
 
-pretic(2,"2",obj)
+  const ownpipe= functions => value =>{
+    let x=0;
+      for(let i=0;i<functions.length;i++){
+         const fun=functions[i];
+         x=fun(value);
+        console.log(x)
+        value=x;
+      }  
+    return functions[functions.length-1](x)
+  } 
